@@ -56,7 +56,27 @@ namespace VATSIM_ATC_Assistent
                         GeoCoordinate pilot_location = new GeoCoordinate(pilot_lat, pilot_lng);
                         var distance = location.GetDistanceTo(pilot_location) * 0.000539956803;
 
-                        if (distance <= 1000)
+                        if (distance <= 15)
+                            output.Add(pilot);
+
+                    }
+
+                    onClient(output, location);
+
+                    break;
+
+                case "LPPT_TWR":
+                    location = new GeoCoordinate(38.7751313, -9.1437917);
+
+                    foreach (var pilot in pilots)
+                    {
+
+                        double pilot_lat = Convert.ToDouble(pilot.location[1].Replace(".", ","));
+                        double pilot_lng = Convert.ToDouble(pilot.location[0].Replace(".", ","));
+                        GeoCoordinate pilot_location = new GeoCoordinate(pilot_lat, pilot_lng);
+                        var distance = location.GetDistanceTo(pilot_location) * 0.000539956803;
+
+                        if (distance <= 30)
                             output.Add(pilot);
 
                     }

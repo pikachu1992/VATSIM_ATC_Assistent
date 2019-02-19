@@ -43,6 +43,14 @@ namespace VATSIM_ATC_Assistent
                         lstDeparturePilots.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                         lstDeparturePilots.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     }
+                    else
+                    {
+                        lstArrivalPilots.Items.Add(new ListViewItem(new string[]{
+                                        pilot.callsign.ToString()
+                                         }));
+                        lstArrivalPilots.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                        lstArrivalPilots.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                    }
                 }
             }
         }
@@ -54,6 +62,7 @@ namespace VATSIM_ATC_Assistent
             btnAliasSendFIXALT.Visible = false;
             btnAliasSendTransferATC.Enabled = false;
             btnAliasSendTaxi.Enabled = false;
+            btnARRAliasTransferATC.Enabled = false;
         }
 
         private void lstDeparturePilots_SelectedIndexChanged(object sender, EventArgs e)
@@ -361,6 +370,87 @@ namespace VATSIM_ATC_Assistent
             }
 
             btnAliasSendTaxi.Enabled = false;
+        }
+
+        private void genTransferATCARR_Click(object sender, EventArgs e)
+        {
+            switch (cboxTransferATC.SelectedItem)
+            {
+                case "UNICOM":
+                    switch (App.ATCPosition)
+                    {
+                        case "LPPT_GND":
+                            lblARRTransfer.Text = "Frequency changed approved, thank you for your flight!";
+                            break;
+
+                        case "LPPT_TWR":
+                            lblARRTransfer.Text = "Frequency changed approved, thank you for your flight!";
+                            break;
+
+                    }
+                    break;
+            }
+
+            btnARRAliasTransferATC.Enabled = true;
+        }
+
+        private void label8_TextChanged(object sender, EventArgs e)
+        {
+            DisableAliasBtns();
+        }
+
+        private void btnARRAliasTransferATC_Click(object sender, EventArgs e)
+        {
+            IntPtr zero = IntPtr.Zero;
+            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
+            {
+                Thread.Sleep(500);
+                zero = FindWindow(null, App.ESVersion);
+            }
+            if (zero != IntPtr.Zero)
+            {
+                SetForegroundWindow(zero);
+                SendKeys.SendWait(lblARRTransfer.Text);
+                SendKeys.SendWait("{ENTER}");
+                SendKeys.Flush();
+                btnPushAndStart.Enabled = false;
+                lblARRTransfer.Text = "Sended to EuroScope";
+            }
+
+            btnAliasSendTransferATC.Enabled = false;
+        }
+
+        private void lstArrivalPilots_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            App.mainFrm.gboxArrivals.Visible = true;
+            lblARRTransfer.Text = "";
+            DisableAliasBtns();
+
+            if (lstArrivalPilots.SelectedItems.Count > 0)
+            {
+                foreach (var pilot in App.Pilots)
+                {
+
+
+                    if (pilot.callsign == lstArrivalPilots.SelectedItems[0].Text)
+                    {
+                        lblARRCallsign.Text = pilot.callsign;
+                        lblARRRoute.Text = pilot.planned_route;
+
+                        if (pilot.planned_depairport != null)
+                            lblArrDEP.Text = pilot.planned_depairport;
+                        else
+                            lblArrDEP.Text = "";
+
+                        if (pilot.planned_destairport != null)
+                            lblArrARR.Text = pilot.planned_destairport;
+                        else
+                            lblArrARR.Text = "";
+
+                    }
+
+                }
+            }
         }
     }
 }

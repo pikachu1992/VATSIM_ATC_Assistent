@@ -18,6 +18,10 @@ namespace VATSIM_ATC_Assistent.UI
                 case "LPPT_GND":
                     GNDShows();
                     break;
+                case "LPPT_TWR":
+                    GNDShows();
+                    TWRShows();
+                    break;
 
                 default:
                     break;
@@ -30,6 +34,11 @@ namespace VATSIM_ATC_Assistent.UI
             App.mainFrm.btnPushAndStart.Visible = true;
             App.mainFrm.cboxPushStart.Visible = true;
             App.mainFrm.btnAliasSendPushAndStart.Visible = true;
+        }
+
+        protected void TWRShows()
+        {
+            App.mainFrm.btnClearedTakeOff.Visible = true;
         }
     }
 }

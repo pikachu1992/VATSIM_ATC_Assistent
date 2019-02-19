@@ -37,14 +37,16 @@
             // 
             // cboxPosition
             // 
+            this.cboxPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxPosition.FormattingEnabled = true;
             this.cboxPosition.Items.AddRange(new object[] {
             "LPPT_DEL",
-            "LPPT_GND"});
-            this.cboxPosition.Location = new System.Drawing.Point(86, 41);
+            "LPPT_GND",
+            "LPPT_TWR"});
+            this.cboxPosition.Location = new System.Drawing.Point(100, 41);
             this.cboxPosition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboxPosition.Name = "cboxPosition";
-            this.cboxPosition.Size = new System.Drawing.Size(135, 23);
+            this.cboxPosition.Size = new System.Drawing.Size(166, 23);
             this.cboxPosition.TabIndex = 0;
             // 
             // label1
@@ -58,7 +60,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(146, 93);
+            this.btnConnect.Location = new System.Drawing.Point(191, 70);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 2;
@@ -77,6 +79,7 @@
             // 
             // cboxESVersion
             // 
+            this.cboxESVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxESVersion.FormattingEnabled = true;
             this.cboxESVersion.Items.AddRange(new object[] {
             "EuroScope V3.1d",
@@ -84,14 +87,14 @@
             this.cboxESVersion.Location = new System.Drawing.Point(100, 12);
             this.cboxESVersion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboxESVersion.Name = "cboxESVersion";
-            this.cboxESVersion.Size = new System.Drawing.Size(121, 23);
+            this.cboxESVersion.Size = new System.Drawing.Size(166, 23);
             this.cboxESVersion.TabIndex = 3;
             // 
             // ConnFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 139);
+            this.ClientSize = new System.Drawing.Size(277, 108);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboxESVersion);
             this.Controls.Add(this.btnConnect);
