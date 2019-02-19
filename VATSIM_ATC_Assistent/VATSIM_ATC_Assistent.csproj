@@ -151,6 +151,7 @@
     <Compile Include="UI\ManageStringCommands.cs" />
     <Compile Include="UI\Metars.cs" />
     <Compile Include="UI\Pilots.cs" />
+    <Compile Include="UI\Taxiways.cs" />
     <EmbeddedResource Include="ConnFrm.resx">
       <DependentUpon>ConnFrm.cs</DependentUpon>
     </EmbeddedResource>

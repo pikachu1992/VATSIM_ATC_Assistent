@@ -269,8 +269,13 @@ namespace VATSIM_ATC_Assistent
 
         private void MainFrm_VisibleChanged(object sender, EventArgs e)
         {
-            Runways.GetRunways();
+            StartFuncs();      
+        }
 
+        private void StartFuncs()
+        {
+            Taxiways.AddTaxiways();
+            Runways.GetRunways();
         }
 
         private void btnGenFIXALT_Click(object sender, EventArgs e)
@@ -307,6 +312,31 @@ namespace VATSIM_ATC_Assistent
             }
 
             btnAliasSendFIXALT.Visible = false;
+        }
+
+        private void btnGenerateTaxi_Click(object sender, EventArgs e)
+        {
+            List<string> taxies = new List<string>();
+            string output = "";
+
+            foreach(CheckBox item in layPanelTaxiways.Controls)
+            {
+                if(item.Checked)
+                    taxies.Add(item.Text);
+            }
+
+            foreach(var item in taxies)
+            {
+                if (item == taxies[taxies.Count - 1])
+                    output += "and " + item;
+                else
+                    output += item + " ";
+            }
+
+            if(chkbox35.Checked)
+                lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}, cross runway 35 approved.", cboxRunways.SelectedText, output);
+            else
+                lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}.", cboxRunways.SelectedText, output);
         }
     }
 }

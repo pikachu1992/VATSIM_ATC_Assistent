@@ -26,6 +26,7 @@ namespace VATSIM_ATC_Assistent.UI
 
         protected void GNDShows()
         {
+            App.mainFrm.btnGenerateTaxi.Visible = true;
             App.mainFrm.btnPushAndStart.Visible = true;
             App.mainFrm.cboxPushStart.Visible = true;
             App.mainFrm.btnAliasSendPushAndStart.Visible = true;
