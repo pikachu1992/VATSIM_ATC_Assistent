@@ -76,7 +76,7 @@ namespace VATSIM_ATC_Assistent
                         GeoCoordinate pilot_location = new GeoCoordinate(pilot_lat, pilot_lng);
                         var distance = location.GetDistanceTo(pilot_location) * 0.000539956803;
 
-                        if (distance <= 30)
+                        if (distance <= 500)
                             output.Add(pilot);
 
                     }

@@ -63,6 +63,7 @@ namespace VATSIM_ATC_Assistent
             btnAliasSendTransferATC.Enabled = false;
             btnAliasSendTaxi.Enabled = false;
             btnARRAliasTransferATC.Enabled = false;
+            btnARRAliasSendTaxi.Enabled = false;
         }
 
         private void lstDeparturePilots_SelectedIndexChanged(object sender, EventArgs e)
@@ -349,6 +350,8 @@ namespace VATSIM_ATC_Assistent
                 lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}, cross runway 35 approved.", cboxRunways.SelectedText, output);
             else
                 lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}.", cboxRunways.SelectedText, output);
+
+            btnAliasSendTaxi.Enabled = true;
         }
 
         private void btnAliasSendTaxi_Click(object sender, EventArgs e)
@@ -425,6 +428,7 @@ namespace VATSIM_ATC_Assistent
             App.mainFrm.gboxArrivals.Visible = true;
             lblARRTransfer.Text = "";
             DisableAliasBtns();
+            cboxStandARR.SelectedIndex = 0;
 
             if (lstArrivalPilots.SelectedItems.Count > 0)
             {
@@ -451,6 +455,54 @@ namespace VATSIM_ATC_Assistent
 
                 }
             }
+        }
+
+        private void btnGenerateTaxiARR_Click(object sender, EventArgs e)
+        {
+            List<string> taxies = new List<string>();
+            string output = "";
+
+            foreach (CheckBox item in layPanelTaxiwaysARR.Controls)
+            {
+                if (item.Checked)
+                    taxies.Add(item.Text);
+            }
+
+            foreach (var item in taxies)
+            {
+                if (item == taxies[taxies.Count - 1])
+                    output += "and " + item;
+                else
+                    output += item + ", ";
+            }
+
+            if (cboxARR35.Checked)
+                lblARRTransfer.Text = String.Format("Taxi to stand {0}, via {1}, cross runway 35 approved.", cboxStandARR.SelectedItem, output);
+            else
+                lblARRTransfer.Text = String.Format("Taxi to stand {0}, via {1}.", cboxStandARR.SelectedItem, output);
+
+            btnARRAliasSendTaxi.Enabled = true;
+        }
+
+        private void btnARRAliasSendTaxi_Click(object sender, EventArgs e)
+        {
+            IntPtr zero = IntPtr.Zero;
+            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
+            {
+                Thread.Sleep(500);
+                zero = FindWindow(null, App.ESVersion);
+            }
+            if (zero != IntPtr.Zero)
+            {
+                SetForegroundWindow(zero);
+                SendKeys.SendWait(lblARRTransfer.Text);
+                SendKeys.SendWait("{ENTER}");
+                SendKeys.Flush();
+                btnPushAndStart.Enabled = false;
+                lblARRTransfer.Text = "Sended to EuroScope";
+            }
+
+            btnARRAliasSendTaxi.Enabled = false;
         }
     }
 }

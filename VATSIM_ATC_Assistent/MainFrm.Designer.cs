@@ -31,6 +31,7 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDepartures = new System.Windows.Forms.TabPage();
             this.gboxDepartures = new System.Windows.Forms.GroupBox();
+            this.btnClearedTakeOff = new System.Windows.Forms.Button();
             this.chkbox35 = new System.Windows.Forms.CheckBox();
             this.btnGenerateTaxi = new System.Windows.Forms.Button();
             this.layPanelTaxiways = new System.Windows.Forms.FlowLayoutPanel();
@@ -64,27 +65,31 @@
             this.lstDeparturePilots = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabArrivals = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.cboxRunways = new System.Windows.Forms.ComboBox();
-            this.lblMetar = new System.Windows.Forms.Label();
-            this.btnClearedTakeOff = new System.Windows.Forms.Button();
-            this.lstArrivalPilots = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gboxArrivals = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboxStandARR = new System.Windows.Forms.ComboBox();
+            this.cboxARR35 = new System.Windows.Forms.CheckBox();
+            this.layPanelTaxiwaysARR = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGenerateTaxiARR = new System.Windows.Forms.Button();
+            this.lblARRRoute = new System.Windows.Forms.Label();
+            this.cboxARRATCTRANSF = new System.Windows.Forms.ComboBox();
+            this.genTransferATCARR = new System.Windows.Forms.Button();
             this.lblARRTransfer = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnARRAliasTransferATC = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnARRAliasSendTaxi = new System.Windows.Forms.Button();
             this.lblArrARR = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblArrDEP = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.lblARRCallsign = new System.Windows.Forms.Label();
-            this.cboxARRATCTRANSF = new System.Windows.Forms.ComboBox();
-            this.genTransferATCARR = new System.Windows.Forms.Button();
-            this.lblARRRoute = new System.Windows.Forms.Label();
+            this.lstArrivalPilots = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.cboxRunways = new System.Windows.Forms.ComboBox();
+            this.lblMetar = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
             this.gboxDepartures.SuspendLayout();
@@ -153,6 +158,16 @@
             this.gboxDepartures.TabStop = false;
             this.gboxDepartures.Text = "Aircraft Info ";
             this.gboxDepartures.Visible = false;
+            // 
+            // btnClearedTakeOff
+            // 
+            this.btnClearedTakeOff.Location = new System.Drawing.Point(26, 324);
+            this.btnClearedTakeOff.Name = "btnClearedTakeOff";
+            this.btnClearedTakeOff.Size = new System.Drawing.Size(144, 23);
+            this.btnClearedTakeOff.TabIndex = 49;
+            this.btnClearedTakeOff.Text = "Generate TakeOff";
+            this.btnClearedTakeOff.UseVisualStyleBackColor = true;
+            this.btnClearedTakeOff.Visible = false;
             // 
             // chkbox35
             // 
@@ -494,72 +509,13 @@
             this.tabArrivals.Text = "Arrivals";
             this.tabArrivals.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(766, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 15);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "RWY in use:";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(969, 22);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 2;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // cboxRunways
-            // 
-            this.cboxRunways.FormattingEnabled = true;
-            this.cboxRunways.Location = new System.Drawing.Point(856, 23);
-            this.cboxRunways.Name = "cboxRunways";
-            this.cboxRunways.Size = new System.Drawing.Size(107, 23);
-            this.cboxRunways.TabIndex = 3;
-            // 
-            // lblMetar
-            // 
-            this.lblMetar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMetar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblMetar.Location = new System.Drawing.Point(59, 9);
-            this.lblMetar.Name = "lblMetar";
-            this.lblMetar.Size = new System.Drawing.Size(701, 40);
-            this.lblMetar.TabIndex = 4;
-            this.lblMetar.Text = "Metar";
-            // 
-            // btnClearedTakeOff
-            // 
-            this.btnClearedTakeOff.Location = new System.Drawing.Point(26, 324);
-            this.btnClearedTakeOff.Name = "btnClearedTakeOff";
-            this.btnClearedTakeOff.Size = new System.Drawing.Size(144, 23);
-            this.btnClearedTakeOff.TabIndex = 49;
-            this.btnClearedTakeOff.Text = "Generate TakeOff";
-            this.btnClearedTakeOff.UseVisualStyleBackColor = true;
-            this.btnClearedTakeOff.Visible = false;
-            // 
-            // lstArrivalPilots
-            // 
-            this.lstArrivalPilots.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
-            this.lstArrivalPilots.Location = new System.Drawing.Point(8, 6);
-            this.lstArrivalPilots.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.lstArrivalPilots.Name = "lstArrivalPilots";
-            this.lstArrivalPilots.Size = new System.Drawing.Size(121, 496);
-            this.lstArrivalPilots.TabIndex = 1;
-            this.lstArrivalPilots.UseCompatibleStateImageBehavior = false;
-            this.lstArrivalPilots.View = System.Windows.Forms.View.Details;
-            this.lstArrivalPilots.SelectedIndexChanged += new System.EventHandler(this.lstArrivalPilots_SelectedIndexChanged);
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Arrivals";
-            // 
             // gboxArrivals
             // 
+            this.gboxArrivals.Controls.Add(this.label8);
+            this.gboxArrivals.Controls.Add(this.cboxStandARR);
+            this.gboxArrivals.Controls.Add(this.cboxARR35);
+            this.gboxArrivals.Controls.Add(this.layPanelTaxiwaysARR);
+            this.gboxArrivals.Controls.Add(this.btnGenerateTaxiARR);
             this.gboxArrivals.Controls.Add(this.lblARRRoute);
             this.gboxArrivals.Controls.Add(this.cboxARRATCTRANSF);
             this.gboxArrivals.Controls.Add(this.genTransferATCARR);
@@ -579,6 +535,85 @@
             this.gboxArrivals.Text = "Aircraft Info ";
             this.gboxArrivals.Visible = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(76, 205);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 15);
+            this.label8.TabIndex = 52;
+            this.label8.Text = "Stand";
+            // 
+            // cboxStandARR
+            // 
+            this.cboxStandARR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxStandARR.FormattingEnabled = true;
+            this.cboxStandARR.Items.AddRange(new object[] {
+            "126"});
+            this.cboxStandARR.Location = new System.Drawing.Point(26, 235);
+            this.cboxStandARR.Name = "cboxStandARR";
+            this.cboxStandARR.Size = new System.Drawing.Size(145, 23);
+            this.cboxStandARR.TabIndex = 51;
+            // 
+            // cboxARR35
+            // 
+            this.cboxARR35.AutoSize = true;
+            this.cboxARR35.Location = new System.Drawing.Point(180, 268);
+            this.cboxARR35.Name = "cboxARR35";
+            this.cboxARR35.Size = new System.Drawing.Size(136, 19);
+            this.cboxARR35.TabIndex = 50;
+            this.cboxARR35.Text = "Cross Runway 35";
+            this.cboxARR35.UseVisualStyleBackColor = true;
+            // 
+            // layPanelTaxiwaysARR
+            // 
+            this.layPanelTaxiwaysARR.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.layPanelTaxiwaysARR.Location = new System.Drawing.Point(180, 190);
+            this.layPanelTaxiwaysARR.Name = "layPanelTaxiwaysARR";
+            this.layPanelTaxiwaysARR.Size = new System.Drawing.Size(367, 69);
+            this.layPanelTaxiwaysARR.TabIndex = 49;
+            // 
+            // btnGenerateTaxiARR
+            // 
+            this.btnGenerateTaxiARR.Location = new System.Drawing.Point(26, 264);
+            this.btnGenerateTaxiARR.Name = "btnGenerateTaxiARR";
+            this.btnGenerateTaxiARR.Size = new System.Drawing.Size(145, 23);
+            this.btnGenerateTaxiARR.TabIndex = 48;
+            this.btnGenerateTaxiARR.Text = "Generate Taxi";
+            this.btnGenerateTaxiARR.UseVisualStyleBackColor = true;
+            this.btnGenerateTaxiARR.Click += new System.EventHandler(this.btnGenerateTaxiARR_Click);
+            // 
+            // lblARRRoute
+            // 
+            this.lblARRRoute.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblARRRoute.Location = new System.Drawing.Point(78, 89);
+            this.lblARRRoute.Name = "lblARRRoute";
+            this.lblARRRoute.Size = new System.Drawing.Size(800, 84);
+            this.lblARRRoute.TabIndex = 47;
+            this.lblARRRoute.Text = "DCT DCT DCT";
+            this.lblARRRoute.UseCompatibleTextRendering = true;
+            // 
+            // cboxARRATCTRANSF
+            // 
+            this.cboxARRATCTRANSF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxARRATCTRANSF.FormattingEnabled = true;
+            this.cboxARRATCTRANSF.Items.AddRange(new object[] {
+            "UNICOM"});
+            this.cboxARRATCTRANSF.Location = new System.Drawing.Point(177, 292);
+            this.cboxARRATCTRANSF.Name = "cboxARRATCTRANSF";
+            this.cboxARRATCTRANSF.Size = new System.Drawing.Size(121, 23);
+            this.cboxARRATCTRANSF.TabIndex = 46;
+            // 
+            // genTransferATCARR
+            // 
+            this.genTransferATCARR.Location = new System.Drawing.Point(26, 293);
+            this.genTransferATCARR.Name = "genTransferATCARR";
+            this.genTransferATCARR.Size = new System.Drawing.Size(145, 23);
+            this.genTransferATCARR.TabIndex = 45;
+            this.genTransferATCARR.Text = "Gen Transfer";
+            this.genTransferATCARR.UseVisualStyleBackColor = true;
+            this.genTransferATCARR.Click += new System.EventHandler(this.genTransferATCARR_Click);
+            // 
             // lblARRTransfer
             // 
             this.lblARRTransfer.ImageAlign = System.Drawing.ContentAlignment.TopRight;
@@ -593,7 +628,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnARRAliasTransferATC);
-            this.groupBox3.Controls.Add(this.button10);
+            this.groupBox3.Controls.Add(this.btnARRAliasSendTaxi);
             this.groupBox3.Location = new System.Drawing.Point(20, 422);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(845, 68);
@@ -612,15 +647,16 @@
             this.btnARRAliasTransferATC.UseVisualStyleBackColor = true;
             this.btnARRAliasTransferATC.Click += new System.EventHandler(this.btnARRAliasTransferATC_Click);
             // 
-            // button10
+            // btnARRAliasSendTaxi
             // 
-            this.button10.Enabled = false;
-            this.button10.Location = new System.Drawing.Point(6, 29);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(145, 23);
-            this.button10.TabIndex = 14;
-            this.button10.Text = "Send Clearance";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnARRAliasSendTaxi.Enabled = false;
+            this.btnARRAliasSendTaxi.Location = new System.Drawing.Point(6, 29);
+            this.btnARRAliasSendTaxi.Name = "btnARRAliasSendTaxi";
+            this.btnARRAliasSendTaxi.Size = new System.Drawing.Size(145, 23);
+            this.btnARRAliasSendTaxi.TabIndex = 14;
+            this.btnARRAliasSendTaxi.Text = "Send Taxi Land";
+            this.btnARRAliasSendTaxi.UseVisualStyleBackColor = true;
+            this.btnARRAliasSendTaxi.Click += new System.EventHandler(this.btnARRAliasSendTaxi_Click);
             // 
             // lblArrARR
             // 
@@ -679,36 +715,59 @@
             this.lblARRCallsign.TabIndex = 21;
             this.lblARRCallsign.Text = "label1";
             // 
-            // cboxARRATCTRANSF
+            // lstArrivalPilots
             // 
-            this.cboxARRATCTRANSF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxARRATCTRANSF.FormattingEnabled = true;
-            this.cboxARRATCTRANSF.Items.AddRange(new object[] {
-            "UNICOM"});
-            this.cboxARRATCTRANSF.Location = new System.Drawing.Point(177, 287);
-            this.cboxARRATCTRANSF.Name = "cboxARRATCTRANSF";
-            this.cboxARRATCTRANSF.Size = new System.Drawing.Size(121, 23);
-            this.cboxARRATCTRANSF.TabIndex = 46;
+            this.lstArrivalPilots.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.lstArrivalPilots.Location = new System.Drawing.Point(8, 6);
+            this.lstArrivalPilots.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.lstArrivalPilots.Name = "lstArrivalPilots";
+            this.lstArrivalPilots.Size = new System.Drawing.Size(121, 496);
+            this.lstArrivalPilots.TabIndex = 1;
+            this.lstArrivalPilots.UseCompatibleStateImageBehavior = false;
+            this.lstArrivalPilots.View = System.Windows.Forms.View.Details;
+            this.lstArrivalPilots.SelectedIndexChanged += new System.EventHandler(this.lstArrivalPilots_SelectedIndexChanged);
             // 
-            // genTransferATCARR
+            // columnHeader2
             // 
-            this.genTransferATCARR.Location = new System.Drawing.Point(26, 288);
-            this.genTransferATCARR.Name = "genTransferATCARR";
-            this.genTransferATCARR.Size = new System.Drawing.Size(145, 23);
-            this.genTransferATCARR.TabIndex = 45;
-            this.genTransferATCARR.Text = "Gen Transfer";
-            this.genTransferATCARR.UseVisualStyleBackColor = true;
-            this.genTransferATCARR.Click += new System.EventHandler(this.genTransferATCARR_Click);
+            this.columnHeader2.Text = "Arrivals";
             // 
-            // lblARRRoute
+            // label7
             // 
-            this.lblARRRoute.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblARRRoute.Location = new System.Drawing.Point(78, 89);
-            this.lblARRRoute.Name = "lblARRRoute";
-            this.lblARRRoute.Size = new System.Drawing.Size(800, 84);
-            this.lblARRRoute.TabIndex = 47;
-            this.lblARRRoute.Text = "DCT DCT DCT";
-            this.lblARRRoute.UseCompatibleTextRendering = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(766, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "RWY in use:";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(969, 22);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // cboxRunways
+            // 
+            this.cboxRunways.FormattingEnabled = true;
+            this.cboxRunways.Location = new System.Drawing.Point(856, 23);
+            this.cboxRunways.Name = "cboxRunways";
+            this.cboxRunways.Size = new System.Drawing.Size(107, 23);
+            this.cboxRunways.TabIndex = 3;
+            // 
+            // lblMetar
+            // 
+            this.lblMetar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMetar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblMetar.Location = new System.Drawing.Point(59, 9);
+            this.lblMetar.Name = "lblMetar";
+            this.lblMetar.Size = new System.Drawing.Size(701, 40);
+            this.lblMetar.TabIndex = 4;
+            this.lblMetar.Text = "Metar";
             // 
             // MainFrm
             // 
@@ -790,7 +849,7 @@
         private System.Windows.Forms.Label lblARRTransfer;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.Button btnARRAliasTransferATC;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnARRAliasSendTaxi;
         private System.Windows.Forms.Label lblArrARR;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblArrDEP;
@@ -798,6 +857,11 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblARRCallsign;
         private System.Windows.Forms.Label lblARRRoute;
+        private System.Windows.Forms.CheckBox cboxARR35;
+        public System.Windows.Forms.FlowLayoutPanel layPanelTaxiwaysARR;
+        public System.Windows.Forms.Button btnGenerateTaxiARR;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.ComboBox cboxStandARR;
     }
 }
 

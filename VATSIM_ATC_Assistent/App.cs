@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.Threading;
 using System.Windows.Forms;
 using VATSIM_ATC_Assistent.UI;
 
@@ -21,7 +22,7 @@ namespace VATSIM_ATC_Assistent
 
         public static GeoCoordinate ATCLocation { get; set; }
 
-        Timer updateClients = new Timer();
+        System.Windows.Forms.Timer updateClients = new System.Windows.Forms.Timer();
 
         public static string ESVersion { get; set; }
 
@@ -32,6 +33,7 @@ namespace VATSIM_ATC_Assistent
             startFrm.Show();
 
             GetATCs.onATCS += GetATCs_onATCS;
+            GetTrafficFromPosition.onClient += GetTrafficFromPosition_onClient;
 
             updateClients.Interval = 180000;
             updateClients.Tick += UpdateClients_Tick;
@@ -47,16 +49,19 @@ namespace VATSIM_ATC_Assistent
 
         private void GetATCs_onATCS(List<UI.ATCs> atcs)
         {
+            Console.WriteLine("Get ATC's Received...");
             ATCS = atcs;
         }
 
         private void StartFrm_onStartConn(string position)
         {
-            Console.WriteLine("Started, GetGlients...");
+            Console.WriteLine("Started, GetPilots...");
             ATCPosition = position;
 
-            GetTrafficFromPosition.onClient += GetTrafficFromPosition_onClient;
+            
             GetTrafficFromPosition.GetClientsByPositionAsync(position);
+
+            Console.WriteLine("Get ATC's...");
             GetATCs.GetClientsByPositionAsync();
 
             updateClients.Start();
