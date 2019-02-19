@@ -78,7 +78,7 @@ namespace VATSIM_ATC_Assistent
             }
             else
             {
-                Console.WriteLine("Update DepartureList...");
+                Console.WriteLine("Update Departure List...");
                 mainFrm.PopulatePilotsList(pilots);
             }
         }
