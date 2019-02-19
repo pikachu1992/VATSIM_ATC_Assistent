@@ -331,7 +331,7 @@ namespace VATSIM_ATC_Assistent
                 if (item == taxies[taxies.Count - 1])
                     output += "and " + item;
                 else
-                    output += item + " ";
+                    output += item + ", ";
             }
 
             if(chkbox35.Checked)
