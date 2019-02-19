@@ -54,5 +54,8 @@ namespace VATSIM_ATC_Assistent.UI
 
         [JsonProperty("callsign")]
         public string callsign { get; set; }
+
+        [JsonProperty("atis_message")]
+        public string atis_message { get; set; }
     }
 }

@@ -146,6 +146,8 @@
     <Compile Include="UI\GetTrafficFromPosition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Shows.cs" />
+    <Compile Include="UI\ManageStringCommands.cs" />
     <Compile Include="UI\Metars.cs" />
     <Compile Include="UI\Pilots.cs" />
     <EmbeddedResource Include="ConnFrm.resx">

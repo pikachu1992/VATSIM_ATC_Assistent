@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Windows.Forms;
+using VATSIM_ATC_Assistent.UI;
 
 namespace VATSIM_ATC_Assistent
 {
@@ -60,11 +61,15 @@ namespace VATSIM_ATC_Assistent
             Pilots = pilots;
             ATCLocation = location;
 
+            
             if (mainFrm == null)
-            {
+            {    
+
                 mainFrm = new MainFrm();
 
                 mainFrm.Show();
+
+                new Shows();
             }
         }
     }

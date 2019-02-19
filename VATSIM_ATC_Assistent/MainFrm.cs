@@ -27,6 +27,7 @@ namespace VATSIM_ATC_Assistent
 
         private void PopulatePilotsList(List<Pilots> pilots)
         {
+            lstDeparturePilots.Items.Clear();
             foreach(var pilot in pilots)
             {
                 if (pilot.planned_destairport != null)
@@ -65,6 +66,7 @@ namespace VATSIM_ATC_Assistent
         private void DisableAliasBtns()
         {
             btnAliasSendClearance.Enabled = false;
+            btnPushAndStart.Enabled = false;
         }
 
         private void lstDeparturePilots_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +74,7 @@ namespace VATSIM_ATC_Assistent
             App.mainFrm.gboxDepartures.Visible = true;
             cboxSID.SelectedIndex = 0;
             lblClearance.Text = "";
+            lblPushStart.Text = "";
             DisableAliasBtns();
 
             if (lstDeparturePilots.SelectedItems.Count > 0) {
@@ -118,6 +121,10 @@ namespace VATSIM_ATC_Assistent
 
         private void btnGenerateClearance_Click(object sender, EventArgs e)
         {
+            string ATISmessage = "";
+
+            btnGenerateClearance.Enabled = false;
+
             bool haveATIS = false;
 
             if (txtSquawk.Text.Length != 4)
@@ -127,10 +134,11 @@ namespace VATSIM_ATC_Assistent
                 string dest = lblDestination.Text;
                 string sid = "";
                 string squawk = txtSquawk.Text;
+                string infoATIS = "";
 
-                if(cboxSID.SelectedItem != "NONE")
+                if (cboxSID.SelectedItem != "NONE")
                 {
-                    
+                    sid = cboxSID.SelectedItem.ToString();
                 }
                 else
                 {
@@ -142,41 +150,30 @@ namespace VATSIM_ATC_Assistent
                     if(atc.callsign == App.ATCPosition.Split("_".ToCharArray())[0] + "_ATIS")
                     {
                         haveATIS = true;
+                        ATISmessage = atc.atis_message;
                     }
                 }
 
                 if (haveATIS)
-                    lblClearance.Text = String.Format("Information XX is current. Cleared to {0}, {1}, initial climb FL60, squawk {2}.", dest, sid, squawk);
+                {
+                    infoATIS = ManageStringCommands.GetAtisInfoLetter(ATISmessage);
+
+                    lblClearance.Text = String.Format("Information {0} is current. Cleared to {1}, {2}, initial climb FL60, squawk {3}.", infoATIS, dest, sid, squawk);
+                }
                 else
                 {
-                    string wind_info = "";
+                    string wind_info = ManageStringCommands.GetWindsString();
 
-                    if(Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust != "")
-                        wind_info = String.Format("Winds {0} degrees {1} knots gusts {2} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust);
-                    else
-                        wind_info = String.Format("Winds {0} degrees {1} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed);
+                    string rwy_suggested = ManageStringCommands.GetSuggestedRunway();
 
-                    string rwy_suggested = "";
-
-                    string initial_FL = "";
-
-                    switch (App.ATCPosition.Split("_".ToCharArray())[0])
-                    {
-                        case "LPPT":
-                            if (Convert.ToInt32(Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection) > 120 && Convert.ToInt32(Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection) < 300)
-                                rwy_suggested = "suggest Runway 21";
-                            else
-                                rwy_suggested = "suggest Runway 03";
-
-                            initial_FL = "initial climb FL60";
-                            break;
-                    }
+                    string initial_FL = ManageStringCommands.GetInitialFL();
 
                     string qnh = Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).Altimeter;
 
                     lblClearance.Text = String.Format("{0}, {1}, QNH{2}. Cleared to {3}, {4}, {5}, squawk {6}.", wind_info, rwy_suggested, qnh, dest, sid, initial_FL, squawk);
                 }
 
+                btnGenerateClearance.Enabled = true;
                 btnAliasSendClearance.Enabled = true;
             }
         }
@@ -193,14 +190,32 @@ namespace VATSIM_ATC_Assistent
             {
                 SetForegroundWindow(zero);
                 SendKeys.SendWait(lblClearance.Text);
+                SendKeys.SendWait("{ENTER}");
                 SendKeys.Flush();
             }
         }
 
         private void btnPushStart_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine(Metars.GetMetars(App.ATCPosition.Split("_".ToCharArray())[0]));
-            lblPushStart.Text = String.Format("Push and Start approved facing {0}, {0}", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).Altimeter);
+            lblPushStart.Text = String.Format("Push and Start approved facing {0}, Squawk mode C", cboxPushStart.SelectedItem);
+            btnPushAndStart.Enabled = true;
+        }
+
+        private void btnAliasSendPushAndStart_Click(object sender, EventArgs e)
+        {
+            IntPtr zero = IntPtr.Zero;
+            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
+            {
+                Thread.Sleep(500);
+                zero = FindWindow(null, "EuroScope V3.1d");
+            }
+            if (zero != IntPtr.Zero)
+            {
+                SetForegroundWindow(zero);
+                SendKeys.SendWait(lblPushStart.Text);
+                SendKeys.SendWait("{ENTER}");
+                SendKeys.Flush();
+            }
         }
     }
 }

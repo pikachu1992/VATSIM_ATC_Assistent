@@ -30,14 +30,12 @@
         {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDepartures = new System.Windows.Forms.TabPage();
-            this.lstDeparturePilots = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabArrivals = new System.Windows.Forms.TabPage();
             this.gboxDepartures = new System.Windows.Forms.GroupBox();
             this.lblPushStart = new System.Windows.Forms.Label();
             this.cboxPushStart = new System.Windows.Forms.ComboBox();
-            this.btnPushStart = new System.Windows.Forms.Button();
+            this.btnAliasSendPushStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPushAndStart = new System.Windows.Forms.Button();
             this.btnAliasSendClearance = new System.Windows.Forms.Button();
             this.cboxSID = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,6 +53,9 @@
             this.lblRoute = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCallsign = new System.Windows.Forms.Label();
+            this.lstDeparturePilots = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabArrivals = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
@@ -86,39 +87,11 @@
             this.tabDepartures.Text = "Departures";
             this.tabDepartures.UseVisualStyleBackColor = true;
             // 
-            // lstDeparturePilots
-            // 
-            this.lstDeparturePilots.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lstDeparturePilots.Location = new System.Drawing.Point(8, 7);
-            this.lstDeparturePilots.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.lstDeparturePilots.Name = "lstDeparturePilots";
-            this.lstDeparturePilots.Size = new System.Drawing.Size(121, 490);
-            this.lstDeparturePilots.TabIndex = 0;
-            this.lstDeparturePilots.UseCompatibleStateImageBehavior = false;
-            this.lstDeparturePilots.View = System.Windows.Forms.View.Details;
-            this.lstDeparturePilots.SelectedIndexChanged += new System.EventHandler(this.lstDeparturePilots_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Departures";
-            // 
-            // tabArrivals
-            // 
-            this.tabArrivals.Location = new System.Drawing.Point(4, 24);
-            this.tabArrivals.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabArrivals.Name = "tabArrivals";
-            this.tabArrivals.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabArrivals.Size = new System.Drawing.Size(1027, 464);
-            this.tabArrivals.TabIndex = 1;
-            this.tabArrivals.Text = "Arrivals";
-            this.tabArrivals.UseVisualStyleBackColor = true;
-            // 
             // gboxDepartures
             // 
             this.gboxDepartures.Controls.Add(this.lblPushStart);
             this.gboxDepartures.Controls.Add(this.cboxPushStart);
-            this.gboxDepartures.Controls.Add(this.btnPushStart);
+            this.gboxDepartures.Controls.Add(this.btnAliasSendPushStart);
             this.gboxDepartures.Controls.Add(this.groupBox1);
             this.gboxDepartures.Controls.Add(this.cboxSID);
             this.gboxDepartures.Controls.Add(this.label6);
@@ -164,19 +137,22 @@
             this.cboxPushStart.Name = "cboxPushStart";
             this.cboxPushStart.Size = new System.Drawing.Size(121, 23);
             this.cboxPushStart.TabIndex = 39;
+            this.cboxPushStart.Visible = false;
             // 
-            // btnPushStart
+            // btnAliasSendPushStart
             // 
-            this.btnPushStart.Location = new System.Drawing.Point(303, 222);
-            this.btnPushStart.Name = "btnPushStart";
-            this.btnPushStart.Size = new System.Drawing.Size(189, 23);
-            this.btnPushStart.TabIndex = 38;
-            this.btnPushStart.Text = "Generate Push and Start";
-            this.btnPushStart.UseVisualStyleBackColor = true;
-            this.btnPushStart.Click += new System.EventHandler(this.btnPushStart_Click);
+            this.btnAliasSendPushStart.Location = new System.Drawing.Point(303, 222);
+            this.btnAliasSendPushStart.Name = "btnAliasSendPushStart";
+            this.btnAliasSendPushStart.Size = new System.Drawing.Size(189, 23);
+            this.btnAliasSendPushStart.TabIndex = 38;
+            this.btnAliasSendPushStart.Text = "Generate Push and Start";
+            this.btnAliasSendPushStart.UseVisualStyleBackColor = true;
+            this.btnAliasSendPushStart.Visible = false;
+            this.btnAliasSendPushStart.Click += new System.EventHandler(this.btnPushStart_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPushAndStart);
             this.groupBox1.Controls.Add(this.btnAliasSendClearance);
             this.groupBox1.Location = new System.Drawing.Point(20, 403);
             this.groupBox1.Name = "groupBox1";
@@ -184,6 +160,18 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EuroScope Alias";
+            // 
+            // btnPushAndStart
+            // 
+            this.btnPushAndStart.Enabled = false;
+            this.btnPushAndStart.Location = new System.Drawing.Point(157, 29);
+            this.btnPushAndStart.Name = "btnPushAndStart";
+            this.btnPushAndStart.Size = new System.Drawing.Size(145, 23);
+            this.btnPushAndStart.TabIndex = 15;
+            this.btnPushAndStart.Text = "Send Push/Start";
+            this.btnPushAndStart.UseVisualStyleBackColor = true;
+            this.btnPushAndStart.Visible = false;
+            this.btnPushAndStart.Click += new System.EventHandler(this.btnAliasSendPushAndStart_Click);
             // 
             // btnAliasSendClearance
             // 
@@ -343,6 +331,34 @@
             this.lblCallsign.TabIndex = 21;
             this.lblCallsign.Text = "label1";
             // 
+            // lstDeparturePilots
+            // 
+            this.lstDeparturePilots.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lstDeparturePilots.Location = new System.Drawing.Point(8, 7);
+            this.lstDeparturePilots.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.lstDeparturePilots.Name = "lstDeparturePilots";
+            this.lstDeparturePilots.Size = new System.Drawing.Size(121, 490);
+            this.lstDeparturePilots.TabIndex = 0;
+            this.lstDeparturePilots.UseCompatibleStateImageBehavior = false;
+            this.lstDeparturePilots.View = System.Windows.Forms.View.Details;
+            this.lstDeparturePilots.SelectedIndexChanged += new System.EventHandler(this.lstDeparturePilots_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Departures";
+            // 
+            // tabArrivals
+            // 
+            this.tabArrivals.Location = new System.Drawing.Point(4, 24);
+            this.tabArrivals.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tabArrivals.Name = "tabArrivals";
+            this.tabArrivals.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tabArrivals.Size = new System.Drawing.Size(1027, 507);
+            this.tabArrivals.TabIndex = 1;
+            this.tabArrivals.Text = "Arrivals";
+            this.tabArrivals.UseVisualStyleBackColor = true;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -377,13 +393,10 @@
 
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabDepartures;
-        private System.Windows.Forms.TabPage tabArrivals;
         private System.Windows.Forms.ListView lstDeparturePilots;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.GroupBox gboxDepartures;
         private System.Windows.Forms.Label lblPushStart;
-        private System.Windows.Forms.ComboBox cboxPushStart;
-        private System.Windows.Forms.Button btnPushStart;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAliasSendClearance;
         private System.Windows.Forms.ComboBox cboxSID;
@@ -403,6 +416,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCallsign;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.ComboBox cboxPushStart;
+        public System.Windows.Forms.Button btnAliasSendPushStart;
+        public System.Windows.Forms.Button btnPushAndStart;
+        public System.Windows.Forms.TabPage tabArrivals;
     }
 }
 

@@ -37,7 +37,8 @@
             // 
             this.cboxPosition.FormattingEnabled = true;
             this.cboxPosition.Items.AddRange(new object[] {
-            "LPPT_DEL"});
+            "LPPT_DEL",
+            "LPPT_GND"});
             this.cboxPosition.Location = new System.Drawing.Point(86, 32);
             this.cboxPosition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboxPosition.Name = "cboxPosition";
