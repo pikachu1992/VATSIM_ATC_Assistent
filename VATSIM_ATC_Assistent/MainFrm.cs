@@ -146,7 +146,7 @@ namespace VATSIM_ATC_Assistent
                 }
 
                 if (haveATIS)
-                    lblClearance.Text = String.Format("Information XX is current, Cleared to {0}, {1}, initial climb FL60, squawk {2}.", dest, sid, squawk);
+                    lblClearance.Text = String.Format("Information XX is current. Cleared to {0}, {1}, initial climb FL60, squawk {2}.", dest, sid, squawk);
                 else
                 {
                     string wind_info = "";
