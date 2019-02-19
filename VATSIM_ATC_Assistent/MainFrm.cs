@@ -51,6 +51,7 @@ namespace VATSIM_ATC_Assistent
             btnAliasSendPushAndStart.Enabled = false;
             btnAliasSendFIXALT.Visible = false;
             btnAliasSendTransferATC.Enabled = false;
+            btnAliasSendTaxi.Enabled = false;
         }
 
         private void lstDeparturePilots_SelectedIndexChanged(object sender, EventArgs e)
@@ -337,6 +338,27 @@ namespace VATSIM_ATC_Assistent
                 lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}, cross runway 35 approved.", cboxRunways.SelectedText, output);
             else
                 lblTransfer.Text = String.Format("Taxi holding point runway {0}, via {1}.", cboxRunways.SelectedText, output);
+        }
+
+        private void btnAliasSendTaxi_Click(object sender, EventArgs e)
+        {
+            IntPtr zero = IntPtr.Zero;
+            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
+            {
+                Thread.Sleep(500);
+                zero = FindWindow(null, App.ESVersion);
+            }
+            if (zero != IntPtr.Zero)
+            {
+                SetForegroundWindow(zero);
+                SendKeys.SendWait(lblTransfer.Text);
+                SendKeys.SendWait("{ENTER}");
+                SendKeys.Flush();
+                btnPushAndStart.Enabled = false;
+                lblTransfer.Text = "Sended to EuroScope";
+            }
+
+            btnAliasSendTaxi.Enabled = false;
         }
     }
 }

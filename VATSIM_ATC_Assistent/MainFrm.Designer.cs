@@ -66,6 +66,7 @@
             this.layPanelTaxiways = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGenerateTaxi = new System.Windows.Forms.Button();
             this.chkbox35 = new System.Windows.Forms.CheckBox();
+            this.btnAliasSendTaxi = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
             this.gboxDepartures.SuspendLayout();
@@ -198,6 +199,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAliasSendTaxi);
             this.groupBox1.Controls.Add(this.btnAliasSendFIXALT);
             this.groupBox1.Controls.Add(this.btnAliasSendTransferATC);
             this.groupBox1.Controls.Add(this.btnAliasSendPushAndStart);
@@ -478,6 +480,18 @@
             this.chkbox35.Text = "Cross Runway 35";
             this.chkbox35.UseVisualStyleBackColor = true;
             // 
+            // btnAliasSendTaxi
+            // 
+            this.btnAliasSendTaxi.Enabled = false;
+            this.btnAliasSendTaxi.Location = new System.Drawing.Point(308, 29);
+            this.btnAliasSendTaxi.Name = "btnAliasSendTaxi";
+            this.btnAliasSendTaxi.Size = new System.Drawing.Size(145, 23);
+            this.btnAliasSendTaxi.TabIndex = 18;
+            this.btnAliasSendTaxi.Text = "Send Taxi";
+            this.btnAliasSendTaxi.UseVisualStyleBackColor = true;
+            this.btnAliasSendTaxi.Visible = false;
+            this.btnAliasSendTaxi.Click += new System.EventHandler(this.btnAliasSendTaxi_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -542,6 +556,7 @@
         public System.Windows.Forms.FlowLayoutPanel layPanelTaxiways;
         public System.Windows.Forms.Button btnGenerateTaxi;
         private System.Windows.Forms.CheckBox chkbox35;
+        public System.Windows.Forms.Button btnAliasSendTaxi;
     }
 }
 
