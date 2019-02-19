@@ -23,7 +23,9 @@ namespace VATSIM_ATC_Assistent
             Console.WriteLine("Populate Departure List...");
             PopulatePilotsList(App.Pilots);
             cboxTransferATC.SelectedIndex = 0;
-            
+            lblMetar.Text = Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).RawReport;
+
+
         }
 
         public void PopulatePilotsList(List<Pilots> pilots)

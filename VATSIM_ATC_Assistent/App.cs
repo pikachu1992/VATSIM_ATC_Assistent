@@ -42,6 +42,7 @@ namespace VATSIM_ATC_Assistent
         {
             GetTrafficFromPosition.GetClientsByPositionAsync(ATCPosition);
             GetATCs.GetClientsByPositionAsync();
+            
         }
 
         private void GetATCs_onATCS(List<UI.ATCs> atcs)
@@ -80,6 +81,7 @@ namespace VATSIM_ATC_Assistent
             }
             else
             {
+                mainFrm.lblMetar.Text = Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).RawReport;
                 Console.WriteLine("Update Departure List...");
                 mainFrm.PopulatePilotsList(pilots);
             }

@@ -25,7 +25,7 @@ namespace VATSIM_ATC_Assistent.UI
              
             if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection != "VRB")
             {
-                if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir == null)
+                if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir.Count == 0)
                 {
                     if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust != "")
                         wind_info = String.Format("Winds {0} degrees {1} knots gusts {2} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust);

@@ -31,6 +31,9 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDepartures = new System.Windows.Forms.TabPage();
             this.gboxDepartures = new System.Windows.Forms.GroupBox();
+            this.chkbox35 = new System.Windows.Forms.CheckBox();
+            this.btnGenerateTaxi = new System.Windows.Forms.Button();
+            this.layPanelTaxiways = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGenFIXALT = new System.Windows.Forms.Button();
             this.lblTransfer = new System.Windows.Forms.Label();
             this.cboxTransferATC = new System.Windows.Forms.ComboBox();
@@ -38,6 +41,7 @@
             this.cboxPushStart = new System.Windows.Forms.ComboBox();
             this.btnPushAndStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAliasSendTaxi = new System.Windows.Forms.Button();
             this.btnAliasSendFIXALT = new System.Windows.Forms.Button();
             this.btnAliasSendTransferATC = new System.Windows.Forms.Button();
             this.btnAliasSendPushAndStart = new System.Windows.Forms.Button();
@@ -63,10 +67,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.cboxRunways = new System.Windows.Forms.ComboBox();
-            this.layPanelTaxiways = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGenerateTaxi = new System.Windows.Forms.Button();
-            this.chkbox35 = new System.Windows.Forms.CheckBox();
-            this.btnAliasSendTaxi = new System.Windows.Forms.Button();
+            this.lblMetar = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
             this.gboxDepartures.SuspendLayout();
@@ -132,6 +133,35 @@
             this.gboxDepartures.Text = "Aircraft Info ";
             this.gboxDepartures.Visible = false;
             // 
+            // chkbox35
+            // 
+            this.chkbox35.AutoSize = true;
+            this.chkbox35.Location = new System.Drawing.Point(343, 285);
+            this.chkbox35.Name = "chkbox35";
+            this.chkbox35.Size = new System.Drawing.Size(136, 19);
+            this.chkbox35.TabIndex = 48;
+            this.chkbox35.Text = "Cross Runway 35";
+            this.chkbox35.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerateTaxi
+            // 
+            this.btnGenerateTaxi.Location = new System.Drawing.Point(497, 282);
+            this.btnGenerateTaxi.Name = "btnGenerateTaxi";
+            this.btnGenerateTaxi.Size = new System.Drawing.Size(189, 23);
+            this.btnGenerateTaxi.TabIndex = 47;
+            this.btnGenerateTaxi.Text = "Generate Taxi";
+            this.btnGenerateTaxi.UseVisualStyleBackColor = true;
+            this.btnGenerateTaxi.Visible = false;
+            this.btnGenerateTaxi.Click += new System.EventHandler(this.btnGenerateTaxi_Click);
+            // 
+            // layPanelTaxiways
+            // 
+            this.layPanelTaxiways.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.layPanelTaxiways.Location = new System.Drawing.Point(343, 207);
+            this.layPanelTaxiways.Name = "layPanelTaxiways";
+            this.layPanelTaxiways.Size = new System.Drawing.Size(367, 69);
+            this.layPanelTaxiways.TabIndex = 46;
+            // 
             // btnGenFIXALT
             // 
             this.btnGenFIXALT.Location = new System.Drawing.Point(303, 176);
@@ -156,6 +186,7 @@
             // 
             // cboxTransferATC
             // 
+            this.cboxTransferATC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxTransferATC.FormattingEnabled = true;
             this.cboxTransferATC.Items.AddRange(new object[] {
             "UNICOM"});
@@ -176,6 +207,7 @@
             // 
             // cboxPushStart
             // 
+            this.cboxPushStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxPushStart.FormattingEnabled = true;
             this.cboxPushStart.Items.AddRange(new object[] {
             "NORTH",
@@ -212,6 +244,18 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EuroScope Alias";
+            // 
+            // btnAliasSendTaxi
+            // 
+            this.btnAliasSendTaxi.Enabled = false;
+            this.btnAliasSendTaxi.Location = new System.Drawing.Point(308, 29);
+            this.btnAliasSendTaxi.Name = "btnAliasSendTaxi";
+            this.btnAliasSendTaxi.Size = new System.Drawing.Size(145, 23);
+            this.btnAliasSendTaxi.TabIndex = 18;
+            this.btnAliasSendTaxi.Text = "Send Taxi";
+            this.btnAliasSendTaxi.UseVisualStyleBackColor = true;
+            this.btnAliasSendTaxi.Visible = false;
+            this.btnAliasSendTaxi.Click += new System.EventHandler(this.btnAliasSendTaxi_Click);
             // 
             // btnAliasSendFIXALT
             // 
@@ -260,6 +304,7 @@
             // 
             // cboxSID
             // 
+            this.cboxSID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxSID.FormattingEnabled = true;
             this.cboxSID.Items.AddRange(new object[] {
             "NONE"});
@@ -453,52 +498,22 @@
             this.cboxRunways.Size = new System.Drawing.Size(107, 23);
             this.cboxRunways.TabIndex = 3;
             // 
-            // layPanelTaxiways
+            // lblMetar
             // 
-            this.layPanelTaxiways.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.layPanelTaxiways.Location = new System.Drawing.Point(343, 207);
-            this.layPanelTaxiways.Name = "layPanelTaxiways";
-            this.layPanelTaxiways.Size = new System.Drawing.Size(367, 69);
-            this.layPanelTaxiways.TabIndex = 46;
-            // 
-            // btnGenerateTaxi
-            // 
-            this.btnGenerateTaxi.Location = new System.Drawing.Point(497, 282);
-            this.btnGenerateTaxi.Name = "btnGenerateTaxi";
-            this.btnGenerateTaxi.Size = new System.Drawing.Size(189, 23);
-            this.btnGenerateTaxi.TabIndex = 47;
-            this.btnGenerateTaxi.Text = "Generate Taxi";
-            this.btnGenerateTaxi.UseVisualStyleBackColor = true;
-            this.btnGenerateTaxi.Visible = false;
-            this.btnGenerateTaxi.Click += new System.EventHandler(this.btnGenerateTaxi_Click);
-            // 
-            // chkbox35
-            // 
-            this.chkbox35.AutoSize = true;
-            this.chkbox35.Location = new System.Drawing.Point(343, 285);
-            this.chkbox35.Name = "chkbox35";
-            this.chkbox35.Size = new System.Drawing.Size(136, 19);
-            this.chkbox35.TabIndex = 48;
-            this.chkbox35.Text = "Cross Runway 35";
-            this.chkbox35.UseVisualStyleBackColor = true;
-            // 
-            // btnAliasSendTaxi
-            // 
-            this.btnAliasSendTaxi.Enabled = false;
-            this.btnAliasSendTaxi.Location = new System.Drawing.Point(308, 29);
-            this.btnAliasSendTaxi.Name = "btnAliasSendTaxi";
-            this.btnAliasSendTaxi.Size = new System.Drawing.Size(145, 23);
-            this.btnAliasSendTaxi.TabIndex = 18;
-            this.btnAliasSendTaxi.Text = "Send Taxi";
-            this.btnAliasSendTaxi.UseVisualStyleBackColor = true;
-            this.btnAliasSendTaxi.Visible = false;
-            this.btnAliasSendTaxi.Click += new System.EventHandler(this.btnAliasSendTaxi_Click);
+            this.lblMetar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMetar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblMetar.Location = new System.Drawing.Point(59, 9);
+            this.lblMetar.Name = "lblMetar";
+            this.lblMetar.Size = new System.Drawing.Size(701, 40);
+            this.lblMetar.TabIndex = 4;
+            this.lblMetar.Text = "Metar";
             // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 623);
+            this.Controls.Add(this.lblMetar);
             this.Controls.Add(this.cboxRunways);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label7);
@@ -559,6 +574,7 @@
         public System.Windows.Forms.Button btnGenerateTaxi;
         private System.Windows.Forms.CheckBox chkbox35;
         public System.Windows.Forms.Button btnAliasSendTaxi;
+        public System.Windows.Forms.Label lblMetar;
     }
 }
 

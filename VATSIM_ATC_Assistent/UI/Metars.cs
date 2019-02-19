@@ -24,7 +24,10 @@ namespace VATSIM_ATC_Assistent.UI
         public string WindGust { get; set; }
 
         [JsonProperty("Wind-Variable-Dir")]
-        public string WindVariableDir { get; set; }
+        public List<string> WindVariableDir { get; set; }
+
+        [JsonProperty("Raw-Report")]
+        public string RawReport { get; set; }
 
         public static Metars Metar(string ICAO)
         {
