@@ -22,15 +22,27 @@ namespace VATSIM_ATC_Assistent.UI
         {
             string wind_info = "";
 
+             
             if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection != "VRB")
             {
-                if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust != "")
-                    wind_info = String.Format("Winds {0} degrees {1} knots gusts {2} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust);
+                if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir == null)
+                {
+                    if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust != "")
+                        wind_info = String.Format("Winds {0} degrees {1} knots gusts {2} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust);
+                    else
+                        wind_info = String.Format("Winds {0} degrees {1} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed);
+                }
                 else
-                    wind_info = String.Format("Winds {0} degrees {1} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindDirection, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed);
+                {
+                    if (Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust != "")
+                        wind_info = String.Format("Winds variables between {0} and {1} degrees {2} knots gusts {3} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir[0], Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir[1], Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed, Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindGust);
+                    else
+                        wind_info = String.Format("Winds variables between {0} and {1} degrees {2} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir[0], Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindVariableDir[1], Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed);
+                }
             }
             else
                 wind_info = String.Format("Winds variables {0} knots", Metars.Metar(App.ATCPosition.Split("_".ToCharArray())[0]).WindSpeed);
+
 
             return wind_info;
         }

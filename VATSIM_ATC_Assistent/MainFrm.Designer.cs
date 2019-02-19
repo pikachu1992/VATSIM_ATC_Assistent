@@ -31,19 +31,19 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDepartures = new System.Windows.Forms.TabPage();
             this.gboxDepartures = new System.Windows.Forms.GroupBox();
+            this.btnGenFIXALT = new System.Windows.Forms.Button();
             this.lblTransfer = new System.Windows.Forms.Label();
-            this.lblTaxi = new System.Windows.Forms.Label();
             this.cboxTransferATC = new System.Windows.Forms.ComboBox();
             this.btnTransfer = new System.Windows.Forms.Button();
-            this.lblPushStart = new System.Windows.Forms.Label();
             this.cboxPushStart = new System.Windows.Forms.ComboBox();
-            this.btnAliasSendPushStart = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPushAndStart = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAliasSendFIXALT = new System.Windows.Forms.Button();
+            this.btnAliasSendTransferATC = new System.Windows.Forms.Button();
+            this.btnAliasSendPushAndStart = new System.Windows.Forms.Button();
             this.btnAliasSendClearance = new System.Windows.Forms.Button();
             this.cboxSID = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblClearance = new System.Windows.Forms.Label();
             this.btnGenerateClearance = new System.Windows.Forms.Button();
             this.txtSquawk = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,8 +61,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabArrivals = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnGenFIXALT = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.cboxRunways = new System.Windows.Forms.ComboBox();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
             this.gboxDepartures.SuspendLayout();
@@ -97,16 +97,13 @@
             // 
             this.gboxDepartures.Controls.Add(this.btnGenFIXALT);
             this.gboxDepartures.Controls.Add(this.lblTransfer);
-            this.gboxDepartures.Controls.Add(this.lblTaxi);
             this.gboxDepartures.Controls.Add(this.cboxTransferATC);
             this.gboxDepartures.Controls.Add(this.btnTransfer);
-            this.gboxDepartures.Controls.Add(this.lblPushStart);
             this.gboxDepartures.Controls.Add(this.cboxPushStart);
-            this.gboxDepartures.Controls.Add(this.btnAliasSendPushStart);
+            this.gboxDepartures.Controls.Add(this.btnPushAndStart);
             this.gboxDepartures.Controls.Add(this.groupBox1);
             this.gboxDepartures.Controls.Add(this.cboxSID);
             this.gboxDepartures.Controls.Add(this.label6);
-            this.gboxDepartures.Controls.Add(this.lblClearance);
             this.gboxDepartures.Controls.Add(this.btnGenerateClearance);
             this.gboxDepartures.Controls.Add(this.txtSquawk);
             this.gboxDepartures.Controls.Add(this.label4);
@@ -128,21 +125,25 @@
             this.gboxDepartures.Text = "Aircraft Info ";
             this.gboxDepartures.Visible = false;
             // 
+            // btnGenFIXALT
+            // 
+            this.btnGenFIXALT.Location = new System.Drawing.Point(303, 176);
+            this.btnGenFIXALT.Name = "btnGenFIXALT";
+            this.btnGenFIXALT.Size = new System.Drawing.Size(145, 23);
+            this.btnGenFIXALT.TabIndex = 45;
+            this.btnGenFIXALT.Text = "Gen Fix ALT";
+            this.btnGenFIXALT.UseVisualStyleBackColor = true;
+            this.btnGenFIXALT.Visible = false;
+            this.btnGenFIXALT.Click += new System.EventHandler(this.btnGenFIXALT_Click);
+            // 
             // lblTransfer
             // 
-            this.lblTransfer.Location = new System.Drawing.Point(17, 385);
+            this.lblTransfer.Location = new System.Drawing.Point(22, 285);
             this.lblTransfer.Name = "lblTransfer";
             this.lblTransfer.Size = new System.Drawing.Size(841, 40);
             this.lblTransfer.TabIndex = 44;
             this.lblTransfer.Text = "label6";
-            // 
-            // lblTaxi
-            // 
-            this.lblTaxi.Location = new System.Drawing.Point(17, 345);
-            this.lblTaxi.Name = "lblTaxi";
-            this.lblTaxi.Size = new System.Drawing.Size(841, 40);
-            this.lblTaxi.TabIndex = 43;
-            this.lblTaxi.Text = "label6";
+            this.lblTransfer.TextChanged += new System.EventHandler(this.lblTransfer_TextChanged);
             // 
             // cboxTransferATC
             // 
@@ -164,14 +165,6 @@
             this.btnTransfer.UseVisualStyleBackColor = true;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
-            // lblPushStart
-            // 
-            this.lblPushStart.Location = new System.Drawing.Point(17, 305);
-            this.lblPushStart.Name = "lblPushStart";
-            this.lblPushStart.Size = new System.Drawing.Size(841, 40);
-            this.lblPushStart.TabIndex = 40;
-            this.lblPushStart.Text = "label6";
-            // 
             // cboxPushStart
             // 
             this.cboxPushStart.FormattingEnabled = true;
@@ -186,20 +179,22 @@
             this.cboxPushStart.TabIndex = 39;
             this.cboxPushStart.Visible = false;
             // 
-            // btnAliasSendPushStart
+            // btnPushAndStart
             // 
-            this.btnAliasSendPushStart.Location = new System.Drawing.Point(303, 206);
-            this.btnAliasSendPushStart.Name = "btnAliasSendPushStart";
-            this.btnAliasSendPushStart.Size = new System.Drawing.Size(189, 23);
-            this.btnAliasSendPushStart.TabIndex = 38;
-            this.btnAliasSendPushStart.Text = "Generate Push and Start";
-            this.btnAliasSendPushStart.UseVisualStyleBackColor = true;
-            this.btnAliasSendPushStart.Visible = false;
-            this.btnAliasSendPushStart.Click += new System.EventHandler(this.btnPushStart_Click);
+            this.btnPushAndStart.Location = new System.Drawing.Point(303, 206);
+            this.btnPushAndStart.Name = "btnPushAndStart";
+            this.btnPushAndStart.Size = new System.Drawing.Size(189, 23);
+            this.btnPushAndStart.TabIndex = 38;
+            this.btnPushAndStart.Text = "Generate Push and Start";
+            this.btnPushAndStart.UseVisualStyleBackColor = true;
+            this.btnPushAndStart.Visible = false;
+            this.btnPushAndStart.Click += new System.EventHandler(this.btnPushStart_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnPushAndStart);
+            this.groupBox1.Controls.Add(this.btnAliasSendFIXALT);
+            this.groupBox1.Controls.Add(this.btnAliasSendTransferATC);
+            this.groupBox1.Controls.Add(this.btnAliasSendPushAndStart);
             this.groupBox1.Controls.Add(this.btnAliasSendClearance);
             this.groupBox1.Location = new System.Drawing.Point(20, 422);
             this.groupBox1.Name = "groupBox1";
@@ -208,17 +203,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EuroScope Alias";
             // 
-            // btnPushAndStart
+            // btnAliasSendFIXALT
             // 
-            this.btnPushAndStart.Enabled = false;
-            this.btnPushAndStart.Location = new System.Drawing.Point(157, 29);
-            this.btnPushAndStart.Name = "btnPushAndStart";
-            this.btnPushAndStart.Size = new System.Drawing.Size(145, 23);
-            this.btnPushAndStart.TabIndex = 15;
-            this.btnPushAndStart.Text = "Send Push/Start";
-            this.btnPushAndStart.UseVisualStyleBackColor = true;
-            this.btnPushAndStart.Visible = false;
-            this.btnPushAndStart.Click += new System.EventHandler(this.btnAliasSendPushAndStart_Click);
+            this.btnAliasSendFIXALT.Location = new System.Drawing.Point(542, 29);
+            this.btnAliasSendFIXALT.Name = "btnAliasSendFIXALT";
+            this.btnAliasSendFIXALT.Size = new System.Drawing.Size(145, 23);
+            this.btnAliasSendFIXALT.TabIndex = 17;
+            this.btnAliasSendFIXALT.Text = "Send FIX ALT";
+            this.btnAliasSendFIXALT.UseVisualStyleBackColor = true;
+            this.btnAliasSendFIXALT.Visible = false;
+            this.btnAliasSendFIXALT.Click += new System.EventHandler(this.btnAliasSendFIXALT_Click);
+            // 
+            // btnAliasSendTransferATC
+            // 
+            this.btnAliasSendTransferATC.Enabled = false;
+            this.btnAliasSendTransferATC.Location = new System.Drawing.Point(693, 29);
+            this.btnAliasSendTransferATC.Name = "btnAliasSendTransferATC";
+            this.btnAliasSendTransferATC.Size = new System.Drawing.Size(145, 23);
+            this.btnAliasSendTransferATC.TabIndex = 16;
+            this.btnAliasSendTransferATC.Text = "Transfer ATC";
+            this.btnAliasSendTransferATC.UseVisualStyleBackColor = true;
+            this.btnAliasSendTransferATC.Click += new System.EventHandler(this.btnAliasSendTransferATC_Click);
+            // 
+            // btnAliasSendPushAndStart
+            // 
+            this.btnAliasSendPushAndStart.Enabled = false;
+            this.btnAliasSendPushAndStart.Location = new System.Drawing.Point(157, 29);
+            this.btnAliasSendPushAndStart.Name = "btnAliasSendPushAndStart";
+            this.btnAliasSendPushAndStart.Size = new System.Drawing.Size(145, 23);
+            this.btnAliasSendPushAndStart.TabIndex = 15;
+            this.btnAliasSendPushAndStart.Text = "Send Push/Start";
+            this.btnAliasSendPushAndStart.UseVisualStyleBackColor = true;
+            this.btnAliasSendPushAndStart.Visible = false;
+            this.btnAliasSendPushAndStart.Click += new System.EventHandler(this.btnAliasSendPushAndStart_Click);
             // 
             // btnAliasSendClearance
             // 
@@ -249,14 +266,6 @@
             this.label6.Size = new System.Drawing.Size(34, 15);
             this.label6.TabIndex = 35;
             this.label6.Text = "SID:";
-            // 
-            // lblClearance
-            // 
-            this.lblClearance.Location = new System.Drawing.Point(17, 265);
-            this.lblClearance.Name = "lblClearance";
-            this.lblClearance.Size = new System.Drawing.Size(841, 40);
-            this.lblClearance.TabIndex = 34;
-            this.lblClearance.Text = "label6";
             // 
             // btnGenerateClearance
             // 
@@ -409,21 +418,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(99, 22);
+            this.label7.Location = new System.Drawing.Point(766, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 15);
+            this.label7.Size = new System.Drawing.Size(84, 15);
             this.label7.TabIndex = 1;
-            this.label7.Text = "label7";
-            // 
-            // btnGenFIXALT
-            // 
-            this.btnGenFIXALT.Location = new System.Drawing.Point(303, 176);
-            this.btnGenFIXALT.Name = "btnGenFIXALT";
-            this.btnGenFIXALT.Size = new System.Drawing.Size(145, 23);
-            this.btnGenFIXALT.TabIndex = 45;
-            this.btnGenFIXALT.Text = "Gen Fix ALT";
-            this.btnGenFIXALT.UseVisualStyleBackColor = true;
-            this.btnGenFIXALT.Visible = false;
+            this.label7.Text = "RWY in use:";
             // 
             // btnUpdate
             // 
@@ -435,11 +434,20 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // cboxRunways
+            // 
+            this.cboxRunways.FormattingEnabled = true;
+            this.cboxRunways.Location = new System.Drawing.Point(856, 23);
+            this.cboxRunways.Name = "cboxRunways";
+            this.cboxRunways.Size = new System.Drawing.Size(107, 23);
+            this.cboxRunways.TabIndex = 3;
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 623);
+            this.Controls.Add(this.cboxRunways);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tabMain);
@@ -447,6 +455,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainFrm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrm_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.MainFrm_VisibleChanged);
             this.tabMain.ResumeLayout(false);
             this.tabDepartures.ResumeLayout(false);
             this.gboxDepartures.ResumeLayout(false);
@@ -462,12 +472,10 @@
         private System.Windows.Forms.ListView lstDeparturePilots;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.GroupBox gboxDepartures;
-        private System.Windows.Forms.Label lblPushStart;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAliasSendClearance;
         private System.Windows.Forms.ComboBox cboxSID;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblClearance;
         private System.Windows.Forms.Button btnGenerateClearance;
         private System.Windows.Forms.TextBox txtSquawk;
         private System.Windows.Forms.Label label4;
@@ -483,16 +491,18 @@
         private System.Windows.Forms.Label lblCallsign;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox cboxPushStart;
-        public System.Windows.Forms.Button btnAliasSendPushStart;
         public System.Windows.Forms.Button btnPushAndStart;
+        public System.Windows.Forms.Button btnAliasSendPushAndStart;
         public System.Windows.Forms.TabPage tabArrivals;
         public System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.Label lblTransfer;
-        private System.Windows.Forms.Label lblTaxi;
         public System.Windows.Forms.ComboBox cboxTransferATC;
         private System.Windows.Forms.Button btnTransfer;
         public System.Windows.Forms.Button btnGenFIXALT;
         private System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.Button btnAliasSendTransferATC;
+        public System.Windows.Forms.ComboBox cboxRunways;
+        public System.Windows.Forms.Button btnAliasSendFIXALT;
     }
 }
 

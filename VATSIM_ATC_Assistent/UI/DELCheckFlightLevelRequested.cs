@@ -43,6 +43,7 @@ namespace VATSIM_ATC_Assistent.UI
                                     {
                                         output = "FL Correct!";
                                         App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.ForestGreen;
+                                        App.mainFrm.btnGenFIXALT.Visible = false;
                                     }
                                 }
 
@@ -64,6 +65,7 @@ namespace VATSIM_ATC_Assistent.UI
                                     {
                                         output = "FL Correct!";
                                         App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.ForestGreen;
+                                        App.mainFrm.btnGenFIXALT.Visible = false;
                                     }
 
                                 }
@@ -79,10 +81,15 @@ namespace VATSIM_ATC_Assistent.UI
                                     if ((Convert.ToInt32(pilot.planned_altitude.Replace(".0", "")) % 2000) == 0)
                                     {
                                         output = "FL have to be ODD!";
+                                        App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.Red;
                                         App.mainFrm.btnGenFIXALT.Visible = true;
                                     }
                                     else
+                                    {
                                         output = "FL Correct!";
+                                        App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.ForestGreen;
+                                        App.mainFrm.btnGenFIXALT.Visible = false;
+                                    }
                                 }
 
                             }
@@ -96,11 +103,15 @@ namespace VATSIM_ATC_Assistent.UI
                                     if (((Convert.ToInt32(parse_alt[parse_alt.Count() - 1]) * 100) % 2000) == 0)
                                     {
                                         output = "FL have to be ODD!";
+                                        App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.Red;
                                         App.mainFrm.btnGenFIXALT.Visible = true;
                                     }
                                     else
+                                    {
                                         output = "FL Correct!";
-
+                                        App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.ForestGreen;
+                                        App.mainFrm.btnGenFIXALT.Visible = false;
+                                    }
                                 }
                             }
                         }

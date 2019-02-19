@@ -1,6 +1,7 @@
 ﻿using Eve;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -21,6 +22,9 @@ namespace VATSIM_ATC_Assistent.UI
 
         [JsonProperty("Wind-Gust")]
         public string WindGust { get; set; }
+
+        [JsonProperty("Wind-Variable-Dir")]
+        public string WindVariableDir { get; set; }
 
         public static Metars Metar(string ICAO)
         {

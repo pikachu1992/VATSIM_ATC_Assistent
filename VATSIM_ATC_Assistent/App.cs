@@ -23,6 +23,8 @@ namespace VATSIM_ATC_Assistent
 
         Timer updateClients = new Timer();
 
+        public static string ESVersion { get; set; }
+
         public App()
         {
             
@@ -31,7 +33,7 @@ namespace VATSIM_ATC_Assistent
 
             GetATCs.onATCS += GetATCs_onATCS;
 
-            updateClients.Interval = 60000;
+            updateClients.Interval = 180000;
             updateClients.Tick += UpdateClients_Tick;
             
         }
@@ -54,7 +56,7 @@ namespace VATSIM_ATC_Assistent
 
             GetTrafficFromPosition.onClient += GetTrafficFromPosition_onClient;
             GetTrafficFromPosition.GetClientsByPositionAsync(position);
-            
+            GetATCs.GetClientsByPositionAsync();
 
             updateClients.Start();
         }
