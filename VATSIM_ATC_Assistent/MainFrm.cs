@@ -20,12 +20,12 @@ namespace VATSIM_ATC_Assistent
         public MainFrm()
         {
             InitializeComponent();
-            Start();
+            Console.WriteLine("Populate Departure List...");
             PopulatePilotsList(App.Pilots);
-
+            cboxTransferATC.SelectedIndex = 0;
         }
 
-        private void PopulatePilotsList(List<Pilots> pilots)
+        public void PopulatePilotsList(List<Pilots> pilots)
         {
             lstDeparturePilots.Items.Clear();
             foreach(var pilot in pilots)
@@ -44,25 +44,6 @@ namespace VATSIM_ATC_Assistent
             }
         }
 
-        public void Start()
-        {
-            IntPtr zero = IntPtr.Zero;
-            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
-            {
-                Thread.Sleep(500);
-                zero = FindWindow(null, "EuroScope V3.1d");
-            }
-            if (zero != IntPtr.Zero)
-            {
-                SetForegroundWindow(zero);
-                //SendKeys.SendWait("^+({HOME})");
-                //SendKeys.SendWait("{DEL}");
-                //SendKeys.SendWait(".vis2 lppt");
-                //SendKeys.SendWait("{ENTER}");
-                SendKeys.Flush();
-            }
-        }
-
         private void DisableAliasBtns()
         {
             btnAliasSendClearance.Enabled = false;
@@ -75,6 +56,8 @@ namespace VATSIM_ATC_Assistent
             cboxSID.SelectedIndex = 0;
             lblClearance.Text = "";
             lblPushStart.Text = "";
+            lblTaxi.Text = "";
+            lblTransfer.Text = "";
             DisableAliasBtns();
 
             if (lstDeparturePilots.SelectedItems.Count > 0) {
@@ -192,6 +175,8 @@ namespace VATSIM_ATC_Assistent
                 SendKeys.SendWait(lblClearance.Text);
                 SendKeys.SendWait("{ENTER}");
                 SendKeys.Flush();
+                btnAliasSendClearance.Enabled = false;
+                lblClearance.Text = "Sended to EuroScope";
             }
         }
 
@@ -215,7 +200,44 @@ namespace VATSIM_ATC_Assistent
                 SendKeys.SendWait(lblPushStart.Text);
                 SendKeys.SendWait("{ENTER}");
                 SendKeys.Flush();
+                btnAliasSendPushStart.Enabled = false;
+                lblPushStart.Text = "Sended to EuroScope";
             }
+            
+        }
+
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            switch (cboxTransferATC.SelectedItem)
+            {
+                case "UNICOM":
+                    switch (App.ATCPosition)
+                    {
+                        case "LPPT_DEL":
+                            lblTransfer.Text = "No More Available ATC, Monitor UNICOM on frequency 122.800, Have a nice flight!";
+                            break;
+
+                        case "LPPT_GND":
+                            lblTransfer.Text = "No More Available ATC, Monitor UNICOM on frequency 122.800, Have a nice flight!";
+                            break;
+
+                        case "LPPT_TWR":
+                            lblTransfer.Text = "No More Available ATC, Monitor UNICOM on frequency 122.800, Have a nice flight!";
+                            break;
+
+                        default:
+                            lblTransfer.Text = "No More Available ATC, Radar Services terminated. Monitor UNICOM on frequency 122.800, Have a nice flight!";
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+           
+            GetTrafficFromPosition.GetClientsByPositionAsync(App.ATCPosition);
+            GetATCs.GetClientsByPositionAsync();
         }
     }
 }

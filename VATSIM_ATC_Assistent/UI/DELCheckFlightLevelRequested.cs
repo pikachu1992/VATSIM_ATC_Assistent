@@ -37,6 +37,7 @@ namespace VATSIM_ATC_Assistent.UI
                                     {
                                         output = "FL have to be EVEN!";
                                         App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.Red;
+                                        App.mainFrm.btnGenFIXALT.Visible = true;
                                     }
                                     else
                                     {
@@ -57,6 +58,7 @@ namespace VATSIM_ATC_Assistent.UI
                                     {
                                         output = "FL have to be EVEN!";
                                         App.mainFrm.lblFlightLevelIsValid.ForeColor = Color.Red;
+                                        App.mainFrm.btnGenFIXALT.Visible = true;
                                     }
                                     else
                                     {
@@ -75,7 +77,10 @@ namespace VATSIM_ATC_Assistent.UI
                                 if (isFloat)
                                 {
                                     if ((Convert.ToInt32(pilot.planned_altitude.Replace(".0", "")) % 2000) == 0)
+                                    {
                                         output = "FL have to be ODD!";
+                                        App.mainFrm.btnGenFIXALT.Visible = true;
+                                    }
                                     else
                                         output = "FL Correct!";
                                 }
@@ -88,8 +93,11 @@ namespace VATSIM_ATC_Assistent.UI
                                 bool isFloat = (Convert.ToInt32(parse_alt[parse_alt.Count()-1]) * 100).ToString("F0").All(char.IsDigit);
                                 if (isFloat)
                                 {
-                                    if (((Convert.ToInt32(parse_alt[parse_alt.Count()-1]) * 100) % 2000) == 0)
+                                    if (((Convert.ToInt32(parse_alt[parse_alt.Count() - 1]) * 100) % 2000) == 0)
+                                    {
                                         output = "FL have to be ODD!";
+                                        App.mainFrm.btnGenFIXALT.Visible = true;
+                                    }
                                     else
                                         output = "FL Correct!";
 

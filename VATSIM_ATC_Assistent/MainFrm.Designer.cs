@@ -31,6 +31,10 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDepartures = new System.Windows.Forms.TabPage();
             this.gboxDepartures = new System.Windows.Forms.GroupBox();
+            this.lblTransfer = new System.Windows.Forms.Label();
+            this.lblTaxi = new System.Windows.Forms.Label();
+            this.cboxTransferATC = new System.Windows.Forms.ComboBox();
+            this.btnTransfer = new System.Windows.Forms.Button();
             this.lblPushStart = new System.Windows.Forms.Label();
             this.cboxPushStart = new System.Windows.Forms.ComboBox();
             this.btnAliasSendPushStart = new System.Windows.Forms.Button();
@@ -57,6 +61,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabArrivals = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnGenFIXALT = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabDepartures.SuspendLayout();
             this.gboxDepartures.SuspendLayout();
@@ -71,7 +77,7 @@
             this.tabMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1035, 535);
+            this.tabMain.Size = new System.Drawing.Size(1035, 545);
             this.tabMain.TabIndex = 0;
             // 
             // tabDepartures
@@ -82,13 +88,18 @@
             this.tabDepartures.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabDepartures.Name = "tabDepartures";
             this.tabDepartures.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabDepartures.Size = new System.Drawing.Size(1027, 507);
+            this.tabDepartures.Size = new System.Drawing.Size(1027, 517);
             this.tabDepartures.TabIndex = 0;
             this.tabDepartures.Text = "Departures";
             this.tabDepartures.UseVisualStyleBackColor = true;
             // 
             // gboxDepartures
             // 
+            this.gboxDepartures.Controls.Add(this.btnGenFIXALT);
+            this.gboxDepartures.Controls.Add(this.lblTransfer);
+            this.gboxDepartures.Controls.Add(this.lblTaxi);
+            this.gboxDepartures.Controls.Add(this.cboxTransferATC);
+            this.gboxDepartures.Controls.Add(this.btnTransfer);
             this.gboxDepartures.Controls.Add(this.lblPushStart);
             this.gboxDepartures.Controls.Add(this.cboxPushStart);
             this.gboxDepartures.Controls.Add(this.btnAliasSendPushStart);
@@ -111,11 +122,47 @@
             this.gboxDepartures.Controls.Add(this.lblCallsign);
             this.gboxDepartures.Location = new System.Drawing.Point(136, 7);
             this.gboxDepartures.Name = "gboxDepartures";
-            this.gboxDepartures.Size = new System.Drawing.Size(884, 490);
+            this.gboxDepartures.Size = new System.Drawing.Size(884, 496);
             this.gboxDepartures.TabIndex = 18;
             this.gboxDepartures.TabStop = false;
             this.gboxDepartures.Text = "Aircraft Info ";
             this.gboxDepartures.Visible = false;
+            // 
+            // lblTransfer
+            // 
+            this.lblTransfer.Location = new System.Drawing.Point(17, 385);
+            this.lblTransfer.Name = "lblTransfer";
+            this.lblTransfer.Size = new System.Drawing.Size(841, 40);
+            this.lblTransfer.TabIndex = 44;
+            this.lblTransfer.Text = "label6";
+            // 
+            // lblTaxi
+            // 
+            this.lblTaxi.Location = new System.Drawing.Point(17, 345);
+            this.lblTaxi.Name = "lblTaxi";
+            this.lblTaxi.Size = new System.Drawing.Size(841, 40);
+            this.lblTaxi.TabIndex = 43;
+            this.lblTaxi.Text = "label6";
+            // 
+            // cboxTransferATC
+            // 
+            this.cboxTransferATC.FormattingEnabled = true;
+            this.cboxTransferATC.Items.AddRange(new object[] {
+            "UNICOM"});
+            this.cboxTransferATC.Location = new System.Drawing.Point(176, 235);
+            this.cboxTransferATC.Name = "cboxTransferATC";
+            this.cboxTransferATC.Size = new System.Drawing.Size(121, 23);
+            this.cboxTransferATC.TabIndex = 42;
+            // 
+            // btnTransfer
+            // 
+            this.btnTransfer.Location = new System.Drawing.Point(25, 236);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Size = new System.Drawing.Size(145, 23);
+            this.btnTransfer.TabIndex = 41;
+            this.btnTransfer.Text = "Gen Transfer";
+            this.btnTransfer.UseVisualStyleBackColor = true;
+            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
             // lblPushStart
             // 
@@ -133,7 +180,7 @@
             "SOUTH",
             "EAST",
             "WEST"});
-            this.cboxPushStart.Location = new System.Drawing.Point(176, 222);
+            this.cboxPushStart.Location = new System.Drawing.Point(176, 206);
             this.cboxPushStart.Name = "cboxPushStart";
             this.cboxPushStart.Size = new System.Drawing.Size(121, 23);
             this.cboxPushStart.TabIndex = 39;
@@ -141,7 +188,7 @@
             // 
             // btnAliasSendPushStart
             // 
-            this.btnAliasSendPushStart.Location = new System.Drawing.Point(303, 222);
+            this.btnAliasSendPushStart.Location = new System.Drawing.Point(303, 206);
             this.btnAliasSendPushStart.Name = "btnAliasSendPushStart";
             this.btnAliasSendPushStart.Size = new System.Drawing.Size(189, 23);
             this.btnAliasSendPushStart.TabIndex = 38;
@@ -154,7 +201,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnPushAndStart);
             this.groupBox1.Controls.Add(this.btnAliasSendClearance);
-            this.groupBox1.Location = new System.Drawing.Point(20, 403);
+            this.groupBox1.Location = new System.Drawing.Point(20, 422);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(845, 68);
             this.groupBox1.TabIndex = 37;
@@ -189,7 +236,7 @@
             this.cboxSID.FormattingEnabled = true;
             this.cboxSID.Items.AddRange(new object[] {
             "NONE"});
-            this.cboxSID.Location = new System.Drawing.Point(556, 177);
+            this.cboxSID.Location = new System.Drawing.Point(512, 177);
             this.cboxSID.Name = "cboxSID";
             this.cboxSID.Size = new System.Drawing.Size(121, 23);
             this.cboxSID.TabIndex = 36;
@@ -197,7 +244,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(516, 180);
+            this.label6.Location = new System.Drawing.Point(472, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 15);
             this.label6.TabIndex = 35;
@@ -213,7 +260,7 @@
             // 
             // btnGenerateClearance
             // 
-            this.btnGenerateClearance.Location = new System.Drawing.Point(25, 223);
+            this.btnGenerateClearance.Location = new System.Drawing.Point(25, 207);
             this.btnGenerateClearance.Name = "btnGenerateClearance";
             this.btnGenerateClearance.Size = new System.Drawing.Size(145, 23);
             this.btnGenerateClearance.TabIndex = 33;
@@ -223,7 +270,7 @@
             // 
             // txtSquawk
             // 
-            this.txtSquawk.Location = new System.Drawing.Point(373, 177);
+            this.txtSquawk.Location = new System.Drawing.Point(716, 177);
             this.txtSquawk.MaxLength = 4;
             this.txtSquawk.Name = "txtSquawk";
             this.txtSquawk.Size = new System.Drawing.Size(100, 21);
@@ -232,7 +279,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(306, 180);
+            this.label4.Location = new System.Drawing.Point(649, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 15);
             this.label4.TabIndex = 31;
@@ -338,7 +385,7 @@
             this.lstDeparturePilots.Location = new System.Drawing.Point(8, 7);
             this.lstDeparturePilots.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lstDeparturePilots.Name = "lstDeparturePilots";
-            this.lstDeparturePilots.Size = new System.Drawing.Size(121, 490);
+            this.lstDeparturePilots.Size = new System.Drawing.Size(121, 496);
             this.lstDeparturePilots.TabIndex = 0;
             this.lstDeparturePilots.UseCompatibleStateImageBehavior = false;
             this.lstDeparturePilots.View = System.Windows.Forms.View.Details;
@@ -354,7 +401,7 @@
             this.tabArrivals.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabArrivals.Name = "tabArrivals";
             this.tabArrivals.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabArrivals.Size = new System.Drawing.Size(1027, 507);
+            this.tabArrivals.Size = new System.Drawing.Size(1027, 517);
             this.tabArrivals.TabIndex = 1;
             this.tabArrivals.Text = "Arrivals";
             this.tabArrivals.UseVisualStyleBackColor = true;
@@ -368,11 +415,32 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "label7";
             // 
+            // btnGenFIXALT
+            // 
+            this.btnGenFIXALT.Location = new System.Drawing.Point(303, 176);
+            this.btnGenFIXALT.Name = "btnGenFIXALT";
+            this.btnGenFIXALT.Size = new System.Drawing.Size(145, 23);
+            this.btnGenFIXALT.TabIndex = 45;
+            this.btnGenFIXALT.Text = "Gen Fix ALT";
+            this.btnGenFIXALT.UseVisualStyleBackColor = true;
+            this.btnGenFIXALT.Visible = false;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(969, 22);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 612);
+            this.ClientSize = new System.Drawing.Size(1066, 623);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tabMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -390,8 +458,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabDepartures;
         private System.Windows.Forms.ListView lstDeparturePilots;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -420,6 +486,13 @@
         public System.Windows.Forms.Button btnAliasSendPushStart;
         public System.Windows.Forms.Button btnPushAndStart;
         public System.Windows.Forms.TabPage tabArrivals;
+        public System.Windows.Forms.TabControl tabMain;
+        private System.Windows.Forms.Label lblTransfer;
+        private System.Windows.Forms.Label lblTaxi;
+        public System.Windows.Forms.ComboBox cboxTransferATC;
+        private System.Windows.Forms.Button btnTransfer;
+        public System.Windows.Forms.Button btnGenFIXALT;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

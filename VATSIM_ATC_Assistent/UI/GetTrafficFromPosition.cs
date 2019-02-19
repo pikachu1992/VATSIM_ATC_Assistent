@@ -21,13 +21,34 @@ namespace VATSIM_ATC_Assistent
         {
             List<Pilots> pilots = await FaStatusServer.GetAsync<Pilots>("clients", false, "{\"clienttype\":\"PILOT\"}");
             List<Pilots> output = new List<Pilots>();
+            GeoCoordinate location;
 
             switch (position)
             {
                 case "LPPT_DEL":
-                    GeoCoordinate location = new GeoCoordinate(38.7751313, -9.1437917);
+                    location = new GeoCoordinate(38.7751313, -9.1437917);
 
                     foreach(var pilot in pilots)
+                    {
+
+                        double pilot_lat = Convert.ToDouble(pilot.location[1].Replace(".", ","));
+                        double pilot_lng = Convert.ToDouble(pilot.location[0].Replace(".", ","));
+                        GeoCoordinate pilot_location = new GeoCoordinate(pilot_lat, pilot_lng);
+                        var distance = location.GetDistanceTo(pilot_location) * 0.000539956803;
+
+                        if (distance <= 15)
+                            output.Add(pilot);
+
+                    }
+
+                    onClient(output, location);
+                        
+                    break;
+
+                case "LPPT_GND":
+                    location = new GeoCoordinate(38.7751313, -9.1437917);
+
+                    foreach (var pilot in pilots)
                     {
 
                         double pilot_lat = Convert.ToDouble(pilot.location[1].Replace(".", ","));
@@ -41,7 +62,7 @@ namespace VATSIM_ATC_Assistent
                     }
 
                     onClient(output, location);
-                        
+
                     break;
 
                 default:

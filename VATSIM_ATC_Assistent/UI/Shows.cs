@@ -13,7 +13,7 @@ namespace VATSIM_ATC_Assistent.UI
             switch (App.ATCPosition)
             {
                 case "LPPT_DEL":
-                    App.mainFrm.tabArrivals.Hide();
+                    App.mainFrm.tabMain.TabPages.Remove(App.mainFrm.tabArrivals);
                     break;
                 case "LPPT_GND":
                     GNDShows();

@@ -25,7 +25,7 @@ namespace VATSIM_ATC_Assistent
 
         public App()
         {
-            GetATCs.GetClientsByPositionAsync();
+            
             startFrm.onStartConn += StartFrm_onStartConn;
             startFrm.Show();
 
@@ -49,27 +49,37 @@ namespace VATSIM_ATC_Assistent
 
         private void StartFrm_onStartConn(string position)
         {
+            Console.WriteLine("Started, GetGlients...");
             ATCPosition = position;
-            GetTrafficFromPosition.GetClientsByPositionAsync(position);
+
             GetTrafficFromPosition.onClient += GetTrafficFromPosition_onClient;
+            GetTrafficFromPosition.GetClientsByPositionAsync(position);
+            
 
             updateClients.Start();
         }
 
         private void GetTrafficFromPosition_onClient(List<UI.Pilots> pilots, GeoCoordinate location)
         {
+            Console.WriteLine("GetGlients Received...");
             Pilots = pilots;
             ATCLocation = location;
 
             
+            
             if (mainFrm == null)
-            {    
-
+            {
+                Console.WriteLine("Prepare Form...");
                 mainFrm = new MainFrm();
 
                 mainFrm.Show();
 
                 new Shows();
+            }
+            else
+            {
+                Console.WriteLine("Update DepartureList...");
+                mainFrm.PopulatePilotsList(pilots);
             }
         }
     }
