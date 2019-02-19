@@ -145,11 +145,13 @@
             // 
             // lblTransfer
             // 
-            this.lblTransfer.Location = new System.Drawing.Point(22, 285);
+            this.lblTransfer.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblTransfer.Location = new System.Drawing.Point(17, 333);
             this.lblTransfer.Name = "lblTransfer";
-            this.lblTransfer.Size = new System.Drawing.Size(841, 40);
+            this.lblTransfer.Size = new System.Drawing.Size(848, 40);
             this.lblTransfer.TabIndex = 44;
             this.lblTransfer.Text = "label6";
+            this.lblTransfer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblTransfer.TextChanged += new System.EventHandler(this.lblTransfer_TextChanged);
             // 
             // cboxTransferATC
@@ -180,7 +182,7 @@
             "SOUTH",
             "EAST",
             "WEST"});
-            this.cboxPushStart.Location = new System.Drawing.Point(176, 206);
+            this.cboxPushStart.Location = new System.Drawing.Point(176, 266);
             this.cboxPushStart.Name = "cboxPushStart";
             this.cboxPushStart.Size = new System.Drawing.Size(121, 23);
             this.cboxPushStart.TabIndex = 39;
@@ -188,11 +190,11 @@
             // 
             // btnPushAndStart
             // 
-            this.btnPushAndStart.Location = new System.Drawing.Point(303, 206);
+            this.btnPushAndStart.Location = new System.Drawing.Point(26, 265);
             this.btnPushAndStart.Name = "btnPushAndStart";
-            this.btnPushAndStart.Size = new System.Drawing.Size(189, 23);
+            this.btnPushAndStart.Size = new System.Drawing.Size(145, 23);
             this.btnPushAndStart.TabIndex = 38;
-            this.btnPushAndStart.Text = "Generate Push and Start";
+            this.btnPushAndStart.Text = "Generate Push/Start";
             this.btnPushAndStart.UseVisualStyleBackColor = true;
             this.btnPushAndStart.Visible = false;
             this.btnPushAndStart.Click += new System.EventHandler(this.btnPushStart_Click);
@@ -454,14 +456,14 @@
             // layPanelTaxiways
             // 
             this.layPanelTaxiways.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.layPanelTaxiways.Location = new System.Drawing.Point(498, 207);
+            this.layPanelTaxiways.Location = new System.Drawing.Point(343, 207);
             this.layPanelTaxiways.Name = "layPanelTaxiways";
             this.layPanelTaxiways.Size = new System.Drawing.Size(367, 69);
             this.layPanelTaxiways.TabIndex = 46;
             // 
             // btnGenerateTaxi
             // 
-            this.btnGenerateTaxi.Location = new System.Drawing.Point(303, 236);
+            this.btnGenerateTaxi.Location = new System.Drawing.Point(497, 282);
             this.btnGenerateTaxi.Name = "btnGenerateTaxi";
             this.btnGenerateTaxi.Size = new System.Drawing.Size(189, 23);
             this.btnGenerateTaxi.TabIndex = 47;
@@ -473,7 +475,7 @@
             // chkbox35
             // 
             this.chkbox35.AutoSize = true;
-            this.chkbox35.Location = new System.Drawing.Point(356, 263);
+            this.chkbox35.Location = new System.Drawing.Point(343, 285);
             this.chkbox35.Name = "chkbox35";
             this.chkbox35.Size = new System.Drawing.Size(136, 19);
             this.chkbox35.TabIndex = 48;
